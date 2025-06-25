@@ -1,0 +1,60 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-TF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Interactive Profile</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>👤</text></svg>">
+  <meta name="description" content="My Personal Interactive Profile">
+  <!-- Additional meta tags for SEO can be added here -->
+<script type="importmap">
+{
+  "imports": {
+    "react/": "https://esm.sh/react@^19.1.0/",
+    "react": "https://esm.sh/react@^19.1.0",
+    "react-dom/": "https://esm.sh/react-dom@^19.1.0/",
+    "@google/genai": "https://esm.sh/@google/genai@^1.6.0",
+    "uuid": "https://esm.sh/uuid@^11.1.0",
+    "react-router-dom": "https://esm.sh/react-router-dom@6.25.1"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+<body class="bg-gray-100">
+  <div id="root"></div>
+  <script>
+    // --- Gemini API Key Configuration ---
+
+    // **PENTING UNTUK PENGEMBANGAN LOKAL (jika TIDAK menggunakan build process yang menangani file .env):**
+    // 1. Hapus komentar pada baris di bawah ini.
+    // 2. Ganti 'YOUR_GEMINI_API_KEY_HERE' dengan Kunci API Gemini Anda yang sebenarnya.
+    // const apiKeyForLocalDev = 'YOUR_GEMINI_API_KEY_HERE';
+
+    // Blok ini memastikan `process.env` ada, kemudian mencoba mengatur API_KEY jika apiKeyForLocalDev didefinisikan.
+    if (typeof window.process === 'undefined') {
+      window.process = { env: {} };
+    } else if (!window.process.env) {
+      window.process.env = {};
+    }
+
+    // if (typeof apiKeyForLocalDev !== 'undefined' && apiKeyForLocalDev !== 'YOUR_GEMINI_API_KEY_HERE') {
+    //   window.process.env.API_KEY = apiKeyForLocalDev;
+    // }
+    // Catatan: Pengaturan kondisional process.env.API_KEY di atas dikomentari secara default.
+    // Anda harus menghapus komentarnya DAN juga pada apiKeyForLocalDev jika Anda ingin menggunakan metode ini untuk pengujian lokal.
+    // Layanan Gemini (geminiService.ts) akan langsung menggunakan process.env.API_KEY.
+    // Jika process.env.API_KEY tidak diatur dengan cara apa pun, layanan Gemini akan menampilkan error di console.
+
+    // **PENTING UNTUK DEPLOYMENT PRODUKSI (Vercel, GitHub Pages dengan Actions, Netlify, dll.):**
+    // JANGAN gunakan metode `apiKeyForLocalDev` atau melakukan hardcode Kunci API Anda di kode sisi klien untuk produksi.
+    // Sebaliknya, Anda WAJIB mengatur API_KEY Anda sebagai ENVIRONMENT VARIABLE di pengaturan platform hosting Anda:
+    //  - Vercel: Project Settings -> Environment Variables
+    //  - GitHub (untuk Actions yang melakukan deployment ke GitHub Pages): Repository Settings -> Secrets and variables -> Actions
+    // Aplikasi (geminiService.ts) sudah dikonfigurasi untuk membaca `process.env.API_KEY` yang diatur oleh lingkungan deployment.
+  </script>
+  <script type="module" src="/index.tsx"></script>
+</body>
+</html>
