@@ -19,5 +19,18 @@
     "@types/node": "^22.14.0",
     "typescript": "~5.7.2",
     "vite": "^6.2.0"
-  }
+  },
+  "description": "This contains everything you need to run your app locally.",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Hermawan1630/profile-hermawan.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Hermawan1630/profile-hermawan/issues"
+  },
+  "homepage": "https://github.com/Hermawan1630/profile-hermawan#readme"
 }
